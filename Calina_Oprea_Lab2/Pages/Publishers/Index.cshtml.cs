@@ -28,5 +28,23 @@ namespace Calina_Oprea_Lab2.Pages.Publishers
                 Publisher = await _context.Publisher.ToListAsync();
             }
         }
+        public PublisherIndexData PublisherData { get; set; }
+        public int PublisherID { get; set; }
+        public int BookID { get; set; }
+        public async Task OnGetAsync(int? id, int? bookID)
+        {
+            PublisherData = new PublisherIndexData();
+            PublisherData.Publishers = await _ context.Publisher
+           .Include(i => i.Books)
+           .ThenInclude(c => c.Author)
+           .OrderBy(i => i.PublisherName)
+           .ToListAsync();
+            if (id != null)
+            {
+                PublisherID = id.value _
+               Publisher publisher = PublisherData.Publishers
+               .Where(i => i.ID == id.Value).Single();
+                PublisherData.Books = publisher.books;
+            }
     }
 }
