@@ -8,12 +8,16 @@
 
     <TabBar>_ _
         <ShellContent
-            Title ="Shopping Lists"
-            ContentTemplate ="{ local DataTemplate : MainPage }"
+            Title ="Welcome"
+            ContentTemplate ="{local DataTemplate : MainPage }"
         />
         <ShellContent
             Title ="About"
-            ContentTemplate ="{ local DataTemplate : AboutPage }"
-         />
-    </ TabBar >
+            ContentTemplate ="{local DataTemplate : AboutPage }"
+        />
+		<ShellContent
+            Title ="My Shopping Lists"
+            ContentTemplate ="{local DataTemplate : ListEntryPage }"
+        />
+    </TabBar >
 </Shell>
