@@ -19,4 +19,20 @@ async void OnDeleteButtonClicked(object sender, EventArgs e)
     await App.Database.DeleteShopListAsync(list);
     await Navigation.PopAsync();
 }
+async void OnChooseButtonClicked(object sender, EventArgs e)
+{
+    wait Navigation.PushAsync(new ProductPage((ShopList)this
+   .BindingContext)
+    {
+        BindingContext = new Product()
+    });
+
+}
+protected override async void onAppearing()
+{
+    base.OnAppearing();
+    cousin shopl = (ShopList)BindingContext;
+
+    listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+}
 }
